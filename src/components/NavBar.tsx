@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 
 type Props = {
-  username: string | undefined;
+  username: any;
   avatar: string | undefined;
 };
 
@@ -28,7 +28,7 @@ export const NavBar: React.FC<Props> = ({ username, avatar }: Props) => {
             sx={{
               display: { xs: "block", sm: "block" },
               textDecoration: "none",
-              marginRight: 1,
+              marginLeft: '15px',
             }}
           >
             {username}

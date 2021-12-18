@@ -14,11 +14,14 @@ export const ReadMe: React.FC<Props> = ({ readme }: Props) => {
         sx={{
           width: { sm: "100%", lg: "90%" },
           marginLeft: { lg: "5%", sm: "10px" },
+          marginTop:"10px",
+          overflow: "auto",
           minHeight: "98vh",
           padding: "20px",
           bgcolor: "background.paper",
         }}
       >
+        
         <ReactMarkdown children={readme} remarkPlugins={[remarkGfm]} />
       </Box>
     </>

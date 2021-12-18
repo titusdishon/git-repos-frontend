@@ -5,11 +5,12 @@ import InputBase from "@mui/material/InputBase";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
-import { List, ListItem, Alert, Box } from "@mui/material";
+import { Alert, Box, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setRipos } from "../store/riposSlice";
 import LoadingSpinner from "../components/LoadingSpinner";
+import CreateHelmet from "../components/Helmet";
 
 const Home = () => {
   const [query, setQuery] = useState<string>("");
@@ -21,7 +22,7 @@ const Home = () => {
     `/repos?username=${query}`,
     ["repos", query],
     {
-      enabled,
+      enabled: Boolean(query !== "") && enabled,
     }
   );
 
@@ -33,12 +34,16 @@ const Home = () => {
   return (
     <Box
       sx={{
-        width: { sm: "100%", lg: "40%" },
-        marginLeft: { lg: "30%", sm: "10px" },
-        marginTop: { lg: "10%", sm: "50%" },
-        height: "400px",
+        width: { sm: "70%", lg: "40%", md: "40%", xs: "100%" },
+        margin: "auto",
+        top: "50%",
+        position: "relative",
       }}
     >
+      <CreateHelmet title="Home" />
+      <Typography variant="h4">
+        Enter a Github username and press enter:{" "}
+      </Typography>
       <Paper
         component="form"
         sx={{
@@ -51,7 +56,10 @@ const Home = () => {
         <InputBase
           sx={{ ml: 1, flex: 1 }}
           value={query || ""}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(e) => {
+            setQuery(e.target.value);
+            setEnabled(false);
+          }}
           placeholder="Enter username"
           inputProps={{
             "aria-label": "enter username",
@@ -72,18 +80,19 @@ const Home = () => {
         <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
       </Paper>
       {isLoading && <LoadingSpinner />}
-      <List>
-        {data?.length === 0 && (
-          <ListItem>
-            <Alert sx={{ padding: "2px", width: "100%" }} severity="warning">
-              No record found
-            </Alert>
-          </ListItem>
-        )}
-      </List>
+      {data?.length === 0 && (
+        <Alert sx={{ padding: "2px", width: "100%" }} severity="warning">
+          No record found
+        </Alert>
+      )}
       {isError && error && (
         <Alert severity="error">
           {error.message || "something went wrong"}
+        </Alert>
+      )}
+      {enabled && query === "" && (
+        <Alert sx={{ marginTop: "10px" }} severity="error">
+          Please enter a username
         </Alert>
       )}
     </Box>

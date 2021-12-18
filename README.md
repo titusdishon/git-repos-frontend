@@ -5,8 +5,9 @@ After inputing username on the home pag you should be able to get a list of repo
 
 ### Project Structure
 
-````
-.
+[Live Version ](https://git-repos-frontend.web.app)
+
+```
 ├── README.md
 ├── node_modules [1181 entries exceeds filelimit, not opening dir]
 ├── package-lock.json
@@ -51,6 +52,7 @@ After inputing username on the home pag you should be able to get a list of repo
 └── tsconfig.json
 
 9 directories, 33 files
+
 ```
 
 ### Techstack
@@ -59,41 +61,53 @@ After inputing username on the home pag you should be able to get a list of repo
 2. Redux
 3. Material Ui
 4. React Testing Library
-5. React query 
+5. React query
 
 #### Local set up
 
 1. Clone the repo, then run the following commands in order in your Terminal
 
-
-```bash
+```
 
 cd git-repos-backend
 git checkout <branch-of-interest>
 npm install
-npm run test # to run test coverage
 
 ```
+
 Then run:
-```
-npm start # makes the app available on localhost, port 3001 by default
 
 ```
+npm start
 
-2. Navigate to [http://localhost:3000/](http://localhost:3000/) on  your browser and you should see the application.
+```
 
-### Home layout
+2. Navigate to [http://localhost:3000/](http://localhost:3000/) on your browser and you should see the application.
 
-### Other screens
+### screens
 
-#### Submit a Pull Request
+### Home
+
+![Home](https://raw.githubusercontent.com/titusdishon/git-repos-frontend/main/files/home.png)
+
+### Home when no username is provided
+
+![Home](https://raw.githubusercontent.com/titusdishon/git-repos-frontend/main/files/home-error.png)
+
+### Repos listing
+
+![Repos page](https://raw.githubusercontent.com/titusdishon/git-repos-frontend/main/files/repos.png)
+
+### Readme Page
+
+![Readme](https://raw.githubusercontent.com/titusdishon/git-repos-frontend/main/files/readme.png)
 
 How to:
 
 1. In Terminal, do this in the root directory of the project
 
 ```bash
-git checkout -b feature/short-description 
+git checkout -b feature/short-description
 ```
 
 ##### Branch naming convention\*
@@ -111,4 +125,5 @@ Preface you branch name with
 
 - they do not break existing functionality
 - they do not lower test coverage (unreasonably)
+
 ### sample test coverage

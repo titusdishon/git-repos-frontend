@@ -1,6 +1,7 @@
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useSelector } from "react-redux";
+import CreateHelmet from "../components/Helmet";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { NavBar } from "../components/NavBar";
 import { RootState } from "../store/rootReducer";
@@ -19,12 +20,14 @@ function ReposView() {
   return (
     <>
       {isLoading && <LoadingSpinner />}
-      <NavBar username={repo?.name} avatar={repo?.owner.avatar_url}/>
+      <CreateHelmet title={repo?.name || "repo"} />
+      <NavBar username={repo?.name} avatar={repo?.owner.avatar_url} />
       <Box
         sx={{
           width: { sm: "100%", lg: "90%" },
           marginLeft: { lg: "5%", sm: "10px" },
           minHeight: "98vh",
+          marginTop: "10px",
           padding: "20px",
           bgcolor: "background.paper",
         }}
